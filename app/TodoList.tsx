@@ -17,6 +17,12 @@ const STATUS_ORDER: Record<Status, number> = {
   complete: 2,
 };
 
+const STATUS_COLORS: Record<Status, string> = {
+  todo: 'border-l-4 border-l-gray-300',
+  'in-progress': 'border-l-4 border-l-yellow-400',
+  complete: 'border-l-4 border-l-green-400',
+};
+
 type SortKey = 'default' | 'topic' | 'status' | 'due_date';
 
 function sortTodos(todos: Todo[], sortKey: SortKey): Todo[] {
@@ -155,7 +161,7 @@ export default function TodoList({ initialTodos }: { initialTodos: Todo[] }) {
           return (
             <li
               key={todo.id}
-              className={`flex flex-col gap-2 border rounded px-3 py-2 sm:flex-row sm:items-center ${
+              className={`flex flex-col gap-2 border rounded px-3 py-2 sm:flex-row sm:items-center ${STATUS_COLORS[todo.status]} ${
                 todo.archived ? 'bg-gray-100' : overdue ? 'border-red-300 bg-red-50' : ''
               }`}
             >
