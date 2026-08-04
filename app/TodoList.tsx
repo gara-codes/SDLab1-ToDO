@@ -156,7 +156,7 @@ export default function TodoList({ initialTodos }: { initialTodos: Todo[] }) {
             <li
               key={todo.id}
               className={`flex flex-col gap-2 border rounded px-3 py-2 sm:flex-row sm:items-center ${
-                todo.archived ? 'bg-gray-100' : ''
+                todo.archived ? 'bg-gray-100' : overdue ? 'border-red-300 bg-red-50' : ''
               }`}
             >
               <div className="flex-1">
